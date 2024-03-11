@@ -7,6 +7,10 @@ function adicionarNovoItem() {
   <legend class="w-auto">Item ${itemCounter}</legend>
   <div class="form-row">
     <div class="col">
+      <label for="quantidade_item${itemCounter}">Quantidade:</label>
+      <input type="number" id="quantidade_item${itemCounter}" class="form-control">
+    </div>
+    <div class="col">
       <label for="altura_item${itemCounter}">Altura (cm):</label>
       <input type="number" id="altura_item${itemCounter}" class="form-control">
     </div>
@@ -47,12 +51,14 @@ function calcular() {
     var volumeItens = 0;
     var pesoItens = 0;
     for (var i = 1; i <= itemCounter; i++) {
+        var quantidadeItem = parseInt(document.getElementById('quantidade_item' + i).value);
         var alturaItem = parseFloat(document.getElementById('altura_item' + i).value);
         var larguraItem = parseFloat(document.getElementById('largura_item' + i).value);
         var comprimentoItem = parseFloat(document.getElementById('comprimento_item' + i).value);
         var pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
-        volumeItens += alturaItem * larguraItem * comprimentoItem;
-        pesoItens += pesoItem;
+
+        volumeItens += (alturaItem * larguraItem * comprimentoItem) * quantidadeItem;
+        pesoItens += pesoItem * quantidadeItem;
     }
 
     if (volumeItens > volumePacote) {
@@ -66,14 +72,15 @@ function calcular() {
     }
 
     for (var i = 1; i <= itemCounter; i++) {
+        var quantidadeItem = parseInt(document.getElementById('quantidade_item' + i).value);
         var alturaItem = parseFloat(document.getElementById('altura_item' + i).value);
         var larguraItem = parseFloat(document.getElementById('largura_item' + i).value);
         var comprimentoItem = parseFloat(document.getElementById('comprimento_item' + i).value);
         var pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
 
-        var volumeItem = alturaItem * larguraItem * comprimentoItem;
+        var volumeItem = alturaItem * larguraItem * comprimentoItem * quantidadeItem;
         var proporcaoCubagemItem = volumeItem / volumeItens;
-        var proporcaoPesoItem = pesoItem / pesoItens;
+        var proporcaoPesoItem = pesoItem * quantidadeItem / pesoItens;
 
         var freteItem = (proporcaoCubagemItem * volumePacote + proporcaoPesoItem * pesoPacote) / (volumePacote + pesoPacote) * valorPacote;
 
