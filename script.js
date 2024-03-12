@@ -6,27 +6,27 @@ function adicionarNovoItem() {
 <fieldset class="border p-2 mt-3">
   <legend class="w-auto">Item ${itemCounter}</legend>
   <div class="form-row">
-    <div class="col">
+    <div class="col-lg">
       <label for="quantidade_item${itemCounter}">Quantidade:</label>
       <input type="number" id="quantidade_item${itemCounter}" class="form-control">
     </div>
-    <div class="col">
+    <div class="col-lg">
       <label for="altura_item${itemCounter}">Altura (cm):</label>
       <input type="number" id="altura_item${itemCounter}" class="form-control">
     </div>
-    <div class="col">
+    <div class="col-lg">
       <label for="largura_item${itemCounter}">Largura (cm):</label>
       <input type="number" id="largura_item${itemCounter}" class="form-control">
     </div>
-    <div class="col">
+    <div class="col-lg">
       <label for="comprimento_item${itemCounter}">Comprimento (cm):</label>
       <input type="number" id="comprimento_item${itemCounter}" class="form-control">
     </div>
-    <div class="col">
+    <div class="col-lg">
       <label for="peso_item${itemCounter}">Peso (kg):</label>
       <input type="number" id="peso_item${itemCounter}" class="form-control">
     </div>
-    <div class="col">
+    <div class="col-lg">
       <label for="frete_item${itemCounter}">Valor (R$):</label>
       <input type="text" id="frete_item${itemCounter}" class="form-control frete-item" readonly>
     </div>
