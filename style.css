@@ -3,11 +3,17 @@ body {
 }
 
 fieldset {
-    border-radius: 10px;
+    border-radius: 10px;    
     background-color: #fafafa;
 }
 
 legend {
     font-size: 20px;
     font-weight: bold;
+}
+
+.logo {
+    width: 150px;
+    margin: 0 auto;
+    display: block;
 }
