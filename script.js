@@ -46,6 +46,11 @@ function calcular() {
     var pesoPacote = parseFloat(document.getElementById('peso').value);
     var valorPacote = parseFloat(document.getElementById('valor_pacote').value);
 
+    if (isNaN(alturaPacote) || isNaN(larguraPacote) || isNaN(comprimentoPacote) || isNaN(pesoPacote) || isNaN(valorPacote)) {
+      alert("Preencha todos os campos do Pacote.");
+      return;
+  }
+
     var volumePacote = alturaPacote * larguraPacote * comprimentoPacote;
 
     var volumeItens = 0;
@@ -56,6 +61,11 @@ function calcular() {
         var larguraItem = parseFloat(document.getElementById('largura_item' + i).value);
         var comprimentoItem = parseFloat(document.getElementById('comprimento_item' + i).value);
         var pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
+
+        if (isNaN(quantidadeItem) || isNaN(alturaItem) || isNaN(larguraItem) || isNaN(comprimentoItem) || isNaN(pesoItem)) {
+          alert("Preencha todos os campos do Item " + i + ".");
+          return;
+      }
 
         volumeItens += (alturaItem * larguraItem * comprimentoItem) * quantidadeItem;
         pesoItens += pesoItem * quantidadeItem;
