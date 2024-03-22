@@ -3,41 +3,87 @@ let itemCounter = 2;
 function adicionarNovoItem() {
     itemCounter++;
     const novoItemHTML = `
-<fieldset class="border p-2 mt-3">
-  <legend class="w-auto">Item ${itemCounter}</legend>
-  <div class="form-row">
-    <div class="col-lg">
-      <label for="quantidade_item${itemCounter}">Quantidade:</label>
-      <input type="number" id="quantidade_item${itemCounter}" class="form-control">
-    </div>
-    <div class="col-lg">
-      <label for="altura_item${itemCounter}">Altura (cm):</label>
-      <input type="number" id="altura_item${itemCounter}" class="form-control">
-    </div>
-    <div class="col-lg">
-      <label for="largura_item${itemCounter}">Largura (cm):</label>
-      <input type="number" id="largura_item${itemCounter}" class="form-control">
-    </div>
-    <div class="col-lg">
-      <label for="comprimento_item${itemCounter}">Comprimento (cm):</label>
-      <input type="number" id="comprimento_item${itemCounter}" class="form-control">
-    </div>
-    <div class="col-lg">
-      <label for="peso_item${itemCounter}">Peso (kg):</label>
-      <input type="number" id="peso_item${itemCounter}" class="form-control">
-    </div>
-    <div class="col-lg">
-      <label for="frete_item${itemCounter}">Valor (R$):</label>
-      <input type="text" id="frete_item${itemCounter}" class="form-control frete-item" readonly>
-    </div>
-  </div>
-</fieldset>
-`;
+    <fieldset class="border p-2 mt-3">
+      <legend class="w-auto">Item ${itemCounter}</legend>
+      <div class="form-row">
+        <div class="col-lg">
+          <label for="quantidade_item${itemCounter}">Quantidade:</label>
+          <input type="number" id="quantidade_item${itemCounter}" class="form-control">
+        </div>
+        <div class="col-lg">
+          <label for="altura_item${itemCounter}">Altura (cm):</label>
+          <input type="number" id="altura_item${itemCounter}" class="form-control">
+        </div>
+        <div class="col-lg">
+          <label for="largura_item${itemCounter}">Largura (cm):</label>
+          <input type="number" id="largura_item${itemCounter}" class="form-control">
+        </div>
+        <div class="col-lg">
+          <label for="comprimento_item${itemCounter}">Comprimento (cm):</label>
+          <input type="number" id="comprimento_item${itemCounter}" class="form-control">
+        </div>
+        <div class="col-lg">
+          <label for="peso_item${itemCounter}">Peso (kg):</label>
+          <input type="number" id="peso_item${itemCounter}" class="form-control">
+        </div>
+        <div class="col-lg">
+          <label for="frete_item${itemCounter}">Valor (R$):</label>
+          <input type="text" id="frete_item${itemCounter}" class="form-control frete-item" readonly>
+        </div>
+      </div>
+    </fieldset>
+    `;
     const divNovoItem = document.createElement('div');
     divNovoItem.innerHTML = novoItemHTML;
     const formGroup = document.querySelector('.form-group');
     formGroup.parentNode.insertBefore(divNovoItem, formGroup);
 }
+
+function criarResumoItens() {
+  const modalAnterior = document.getElementById('resumoModal');
+  if (modalAnterior) {
+      modalAnterior.parentNode.removeChild(modalAnterior);
+  }
+
+  let resumoHTML = '<div class="modal fade" id="resumoModal" tabindex="-1" role="dialog" aria-labelledby="resumoModalLabel" aria-hidden="true">';
+  resumoHTML += '<div class="modal-dialog" role="document">';
+  resumoHTML += '<div class="modal-content">';
+  resumoHTML += '<div class="modal-header">';
+  resumoHTML += '<h5 class="modal-title" id="resumoModalLabel">Resumo dos Itens</h5>';
+  resumoHTML += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+  resumoHTML += '<span aria-hidden="true">&times;</span>';
+  resumoHTML += '</button>';
+  resumoHTML += '</div>';
+  resumoHTML += '<div class="modal-body">';
+  resumoHTML += '<ul>';
+
+  for (let i = 1; i <= itemCounter; i++) {
+      const quantidadeItem = parseInt(document.getElementById('quantidade_item' + i).value);
+      const alturaItem = parseFloat(document.getElementById('altura_item' + i).value);
+      const larguraItem = parseFloat(document.getElementById('largura_item' + i).value);
+      const comprimentoItem = parseFloat(document.getElementById('comprimento_item' + i).value);
+      const pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
+      const freteItem = document.getElementById('frete_item' + i).value;
+
+      resumoHTML += `<li><strong>Item ${i}:</strong> Quantidade: ${quantidadeItem}, Altura: ${alturaItem} cm, Largura: ${larguraItem} cm, Comprimento: ${comprimentoItem} cm, Peso: ${pesoItem} kg, Valor do Frete: ${freteItem}</li>`;
+  }
+
+  resumoHTML += '</ul>';
+  resumoHTML += '</div>';
+  resumoHTML += '<div class="modal-footer">';
+  resumoHTML += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>';
+  resumoHTML += '</div>';
+  resumoHTML += '</div>';
+  resumoHTML += '</div>';
+  resumoHTML += '</div>';
+
+  const modalContainer = document.createElement('div');
+  modalContainer.innerHTML = resumoHTML;
+  document.body.appendChild(modalContainer);
+
+  $('#resumoModal').modal('show');
+}
+
 
 function calcular() {
     var alturaPacote = parseFloat(document.getElementById('altura').value);
@@ -47,9 +93,9 @@ function calcular() {
     var valorPacote = parseFloat(document.getElementById('valor_pacote').value);
 
     if (isNaN(alturaPacote) || isNaN(larguraPacote) || isNaN(comprimentoPacote) || isNaN(pesoPacote) || isNaN(valorPacote)) {
-      alert("Preencha todos os campos do Pacote.");
-      return;
-  }
+        alert("Preencha todos os campos do Pacote.");
+        return;
+    }
 
     var volumePacote = alturaPacote * larguraPacote * comprimentoPacote;
 
@@ -63,9 +109,9 @@ function calcular() {
         var pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
 
         if (isNaN(quantidadeItem) || isNaN(alturaItem) || isNaN(larguraItem) || isNaN(comprimentoItem) || isNaN(pesoItem)) {
-          alert("Preencha todos os campos do Item " + i + ".");
-          return;
-      }
+            alert("Preencha todos os campos do Item " + i + ".");
+            return;
+        }
 
         volumeItens += (alturaItem * larguraItem * comprimentoItem) * quantidadeItem;
         pesoItens += pesoItem * quantidadeItem;
@@ -99,4 +145,6 @@ function calcular() {
             currency: 'BRL'
         });
     }
+
+    criarResumoItens();
 }
