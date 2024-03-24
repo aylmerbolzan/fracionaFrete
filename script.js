@@ -65,7 +65,7 @@ function criarResumoItens() {
       const pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
       const freteItem = document.getElementById('frete_item' + i).value;
 
-      resumoHTML += `<li><strong>Item ${i}:</strong> Quantidade: ${quantidadeItem}, Altura: ${alturaItem} cm, Largura: ${larguraItem} cm, Comprimento: ${comprimentoItem} cm, Peso: ${pesoItem} kg, Valor do Frete: ${freteItem}</li>`;
+      resumoHTML += `<li><strong>Item ${i}:<br></strong> ${quantidadeItem} uni - ${alturaItem} x ${larguraItem} x ${comprimentoItem} cm - ${pesoItem} kg: ${freteItem}</li><br>`;
   }
 
   resumoHTML += '</ul>';
