@@ -44,4 +44,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues para repo
 
 ## Licença
 
-Este projeto é distribuído sob a [MIT License](LICENSE).
+Este projeto é distribuído sob a [MIT License](LICENSE.md).
