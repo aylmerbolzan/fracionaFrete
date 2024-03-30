@@ -99,23 +99,32 @@ function downloadResumo() {
 }
 
 function gerarResumoTexto() {
-    let resumo = '';
-    for (let i = 1; i <= itemCounter; i++) {
-        const quantidadeItem = parseInt(document.getElementById('quantidade_item' + i).value);
-        const alturaItem = parseFloat(document.getElementById('altura_item' + i).value);
-        const larguraItem = parseFloat(document.getElementById('largura_item' + i).value);
-        const comprimentoItem = parseFloat(document.getElementById('comprimento_item' + i).value);
-        const pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
-        const freteItem = document.getElementById('frete_item' + i).value;
+  let resumo = '';
 
-        resumo += `Item ${i}:\n`;
-        resumo += `Quantidade: ${quantidadeItem} uni\n`;
-        resumo += `Dimensões: ${alturaItem} x ${larguraItem} x ${comprimentoItem} cm\n`;
-        resumo += `Peso: ${pesoItem} kg\n`;
-        resumo += `Valor do frete: ${freteItem}\n\n`;
-    }
-    return resumo;
+  const valorPacote = parseFloat(document.getElementById('valor_pacote').value);
+  const valorFormatado = valorPacote.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  resumo += `Pacote:\n`;
+  resumo += `Dimensões: ${document.getElementById('altura').value} x ${document.getElementById('largura').value} x ${document.getElementById('comprimento').value} cm\n`;
+  resumo += `Peso: ${document.getElementById('peso').value} kg\n`;
+  resumo += `Valor do frete: ${valorFormatado}\n\n`;
+
+  for (let i = 1; i <= itemCounter; i++) {
+      const quantidadeItem = parseInt(document.getElementById('quantidade_item' + i).value);
+      const alturaItem = parseFloat(document.getElementById('altura_item' + i).value);
+      const larguraItem = parseFloat(document.getElementById('largura_item' + i).value);
+      const comprimentoItem = parseFloat(document.getElementById('comprimento_item' + i).value);
+      const pesoItem = parseFloat(document.getElementById('peso_item' + i).value);
+      const freteItem = document.getElementById('frete_item' + i).value;
+
+      resumo += `Item ${i}:\n`;
+      resumo += `Quantidade: ${quantidadeItem} uni\n`;
+      resumo += `Dimensões: ${alturaItem} x ${larguraItem} x ${comprimentoItem} cm\n`;
+      resumo += `Peso: ${pesoItem} kg\n`;
+      resumo += `Valor do frete: ${freteItem}\n\n`;
+  }
+  return resumo;
 }
+
 
 function calcular() {
     var alturaPacote = parseFloat(document.getElementById('altura').value);
