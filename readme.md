@@ -42,6 +42,15 @@ Este projeto oferece uma solução prática para fracionar o custo do frete de u
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues para reportar bugs, sugerir novas funcionalidades ou melhorias, ou enviar pull requests.
 
+## Como Contribuir
+
+1. Faça o **Fork** do repositório.
+2. **Clone** o fork em seu ambiente de desenvolvimento local.
+3. **Crie** uma nova branch para sua funcionalidade ou correção.
+4. **Implemente** suas alterações.
+5. Faça o **Push** para a sua branch no seu fork.
+6. Envie um **Pull Request** para o repositório principal.
+
 ## Licença
 
 Este projeto é distribuído sob a [MIT License](LICENSE.md).
