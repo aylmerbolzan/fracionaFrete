@@ -32,11 +32,16 @@ Este projeto oferece uma solução prática para fracionar o custo do frete de u
 
 ## Como Utilizar
 
-1. Preencha as informações do pacote (altura, largura, comprimento, peso e valor).
-   
-2. Adicione os itens desejados, especificando a quantidade, altura, largura, comprimento e peso de cada um.
-   
-3. Clique no botão "Calcular" para obter o custo do frete para cada item, distribuído de acordo com sua contribuição proporcional no volume total e no peso do pacote.
+1. **Preencher as Informações do Pacote**: Inicialmente, preencha as informações do pacote, incluindo altura, largura, comprimento, peso e valor. Estes dados são essenciais para calcular o custo do frete.
+
+2. **Adicionar Itens ao Pacote**: Em seguida, adicione os itens desejados ao pacote. Para cada item, especifique a quantidade, altura, largura, comprimento e peso. Isso permite que a aplicação distribua o custo do frete de forma proporcional entre os itens.
+
+3. **Calcular o Custo do Frete**: Clique no botão "Calcular" para que a aplicação realize os cálculos necessários e determine o custo do frete para cada item com base em sua contribuição proporcional no volume total e no peso do pacote.
+
+4. **Visualizar o Resumo dos Itens**: Após o cálculo, a aplicação exibirá um resumo detalhado dos itens, incluindo suas quantidades, dimensões, pesos e custos individuais de frete. Isso proporciona uma visão clara e organizada dos dados.
+
+5. **Baixar o Resumo em Formato de Texto (Opcional)**: Se desejar, você pode baixar o resumo dos itens em formato de texto para referência futura ou compartilhamento com outros. Basta clicar no botão "Baixar Resumo" no modal de resumo exibido.
+
 
 ## Contribuindo
 
