@@ -1,7 +1,17 @@
+/* Corpo do documento:
+    - Define espaçamento interno
+*/
 body {
     padding: 20px;
 }
 
+/* Container principal:
+    - Centraliza horizontalmente,
+    - Adiciona espaçamento interno,
+    - Adciciona borda arredondada,
+    - Adiciona sombra e
+    - Define cor de fundo branca
+*/
 .container {
     margin: 0 auto;
     padding: 20px 20px 1px;
@@ -10,27 +20,48 @@ body {
     background-color: #fff; 
 }
 
+/* Blocos do formulário:
+    - Borda arredondada,
+    - Cor de fundo do fieldset 
+*/
 fieldset {
     border-radius: 10px;    
     background-color: #fafafa;
 }
 
+/* Títulos do formulário:
+    - Define tamanho da fonte,
+    - Define negrito
+*/
 legend {
     font-size: 20px;
     font-weight: bold;
 }
 
+/* Logo:
+    - Define largura da imagem,
+    - Centraliza horizontalmente,
+    - Adiciona margem inferior,
+    - Define como um bloco
+*/
 .logo {
     width: 150px;
     margin: 0 auto 10px;
     display: block;
 }
 
+/* Botões:
+    - Usa flexbox para alignar os botões,
+    - Centraliza horizontalmente
+*/
 .buttons {
     display: flex;
     justify-content: center;
 }
 
+/* Botão:
+    - Adiciona margem horizontal
+*/
 .btn {
     margin: 0 3px;
 }
