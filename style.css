@@ -1,67 +1,233 @@
-/* Corpo do documento:
-    - Define espaçamento interno
-*/
-body {
-    padding: 20px;
+/* Variáveis globais */
+:root {
+    --primary-color: #40A6B9;      /* Azul suave inspirado na logo */
+    --secondary-color: #2C7A8A;    /* Azul mais escuro e sutil */
+    --accent-color: #5CBFAA;       /* Verde suave */
+    --background-color: #FAFAFA;   /* Cinza quase branco */
+    --card-background: #FFFFFF;    /* Branco puro */
+    --text-color: #2C3E50;        /* Azul acinzentado escuro */
+    --border-color: #E8E8E8;      /* Cinza muito claro */
+    --input-background: #FFFFFF;   /* Branco puro */
+    --input-focus: #87CEEB;       /* Azul céu claro */
+    --input-text: #2C3E50;        /* Azul acinzentado escuro */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    --transition: all 0.3s ease;
 }
 
-/* Container principal:
-    - Centraliza horizontalmente,
-    - Adiciona espaçamento interno,
-    - Adciciona borda arredondada,
-    - Adiciona sombra e
-    - Define cor de fundo branca
-*/
-.container {
-    margin: 0 auto;
-    padding: 20px 20px 1px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1); 
-    background-color: #fff; 
+/* Dark mode */
+[data-theme="dark"] {
+    --primary-color: #87CEEB;      /* Azul céu claro */
+    --secondary-color: #40A6B9;    /* Azul suave */
+    --accent-color: #7FCFBD;       /* Verde suave claro */
+    --background-color: #1A1A1A;   /* Quase preto */
+    --card-background: #2D2D2D;    /* Cinza escuro */
+    --text-color: #E0E0E0;        /* Cinza muito claro */
+    --border-color: #404040;      /* Cinza médio */
+    --input-background: #363636;   /* Cinza escuro */
+    --input-focus: #87CEEB;       /* Azul céu claro */
+    --input-text: #E0E0E0;        /* Cinza muito claro */
+    --shadow-color: rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
 }
 
-/* Blocos do formulário:
-    - Borda arredondada,
-    - Cor de fundo do fieldset 
-*/
-fieldset {
-    border-radius: 10px;    
-    background-color: #fafafa;
+/* Tema toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
 }
 
-/* Títulos do formulário:
-    - Define tamanho da fonte,
-    - Define negrito
-*/
-legend {
-    font-size: 20px;
-    font-weight: bold;
+.btn-theme {
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
 }
 
-/* Logo:
-    - Define largura da imagem,
-    - Centraliza horizontalmente,
-    - Adiciona margem inferior,
-    - Define como um bloco
-*/
-.logo {
-    width: 150px;
-    margin: 0 auto 10px;
+.btn-theme:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.sun-icon {
+    display: none;
+}
+
+[data-theme="dark"] .sun-icon {
     display: block;
 }
 
-/* Botões:
-    - Usa flexbox para alignar os botões,
-    - Centraliza horizontalmente
-*/
+[data-theme="dark"] .moon-icon {
+    display: none;
+}
+
+/* Reset e estilos base */
+body {
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: var(--card-background);
+    transition: var(--transition);
+}
+
+/* Blocos do formulário */
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+fieldset:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Títulos do formulário */
+legend {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 0 1rem;
+    background-color: var(--card-background);
+    border-radius: 6px;
+}
+
+/* Campos de formulário */
+.form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: var(--transition);
+    background-color: var(--input-background);
+    color: var(--input-text);
+}
+
+.form-control:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    outline: none;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: var(--input-background);
+    opacity: 0.7;
+}
+
+/* Form row */
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.form-row .col-lg {
+    flex: 1;
+    min-width: 0; /* Previne overflow em telas pequenas */
+}
+
+/* Labels */
+label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    display: block;
+    white-space: nowrap; /* Mantém o label em uma linha */
+}
+
+/* Logo */
+.logo {
+    width: 180px;
+    margin: 0 auto 2rem;
+    display: block;
+    transition: var(--transition);
+    filter: var(--logo-filter);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Botões */
 .buttons {
     display: flex;
     justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-/* Botão:
-    - Adiciona margem horizontal
-*/
 .btn {
-    margin: 0 3px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .form-row {
+        flex-wrap: wrap;
+    }
+    
+    .form-row .col-lg {
+        flex: 1 1 30%; /* 3 campos por linha */
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 992px) {
+    .form-row .col-lg {
+        flex: 1 1 45%; /* 2 campos por linha */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    fieldset {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-row .col-lg {
+        flex: 1 1 100%; /* 1 campo por linha */
+    }
 }

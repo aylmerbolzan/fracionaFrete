@@ -1,3 +1,24 @@
+// Tema
+function initTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Carregar tema salvo ou usar preferência do sistema
+    const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+// Inicializar tema quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', initTheme);
+
 // Variável global com a quantidade inicial de itens já inseridos no formulário
 let itemCounter = 2;
 
